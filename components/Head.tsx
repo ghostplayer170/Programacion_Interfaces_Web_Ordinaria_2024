@@ -1,4 +1,5 @@
 import { FunctionComponent } from "preact";
+import Logout from "../islands/Logout.tsx";
 
 type Data = {
   userName: string;
@@ -10,7 +11,7 @@ const Head: FunctionComponent<Data> = ({ userName }) => {
       <header class="header-container">
         <div class="header-content">
           <span class="user-name">{userName}</span>
-          <a class="logout-button">Logout</a>
+          <Logout />
         </div>
       </header>
     </>
