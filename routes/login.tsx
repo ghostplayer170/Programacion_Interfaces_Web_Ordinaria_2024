@@ -29,8 +29,11 @@ export const handler: Handlers = {
         method: "post",
         headers: {
           "Content-Type": "application/json",
-          body: JSON.stringify({ email, password }),
         },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
       });
       if (response.status === 400 || response.status === 404) {
         return await ctx.render({
@@ -45,7 +48,7 @@ export const handler: Handlers = {
             status: 500,
           });
         }
-        const token = jwt.sing(
+        const token = jwt.sign(
           {
             email,
             id: userResponse.id,

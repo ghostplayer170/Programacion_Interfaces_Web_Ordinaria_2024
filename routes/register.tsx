@@ -48,7 +48,7 @@ export const handler: Handlers = {
             status: 500,
           });
         }
-        const token = jwt.sing(
+        const token = jwt.sign(
           {
             email,
             id: userResponse.id,
