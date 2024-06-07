@@ -17,10 +17,8 @@ export const handler: Handlers<Data, State> = {
   async GET(_req: Request, ctx: FreshContext<State, Data>) {
     try {
       const userid = ctx.state.id;
-      const videoid = ctx.params.id;
+      const videoid = ctx.params.videoid;
       const API_URL = Deno.env.get("API_URL");
-      console.log(userid)
-      console.log(videoid)
       const response = await fetch(`${API_URL}/video/${userid}/${videoid}`);
       if (response.status === 200) {
         const video: video = await response.json();
