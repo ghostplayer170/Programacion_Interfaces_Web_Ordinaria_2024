@@ -5,7 +5,7 @@ import Head from "../components/Head.tsx";
 export default async function Layout(_req: Request, ctx: FreshContext) {
   return (
     <div>
-      <Head userName={`${ctx.state.name} || Unknown`} />
+      <Head userName={`${ctx.state.name || "Unknown"} `} />
       <ctx.Component />
     </div>
   );
