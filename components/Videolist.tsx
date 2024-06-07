@@ -1,5 +1,6 @@
 import { FunctionComponent } from "preact";
 import { video } from "../types.ts";
+import Fav from "../islands/Fav.tsx";
 
 type Data = {
   videos: video[];
@@ -29,7 +30,7 @@ const Videolist: FunctionComponent<Data> = ({ videos, userid }) => {
                     </p>
                   </div>
                 </a>
-                <button class="fav-button">🤍 Add to Favorites</button>
+                <Fav videofav={vid.fav} userid={userid} videoid={vid.id} />
               </div>
             );
           })}
