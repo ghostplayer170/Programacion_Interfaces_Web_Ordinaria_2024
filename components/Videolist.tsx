@@ -16,7 +16,7 @@ const Videolist: FunctionComponent<Data> = ({ videos, userid }) => {
           {videos.map((vid) => {
             return (
               <div class="video-item" key={vid.id}>
-                <a href={`/video/${vid.id}}`} class="video-link">
+                <a href={`/video/${vid.id}`} class="video-link">
                   <img
                     src={vid.thumbnail}
                     alt={vid.title}
