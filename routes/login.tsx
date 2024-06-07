@@ -1,4 +1,9 @@
-import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
+import {
+  FreshContext,
+  Handlers,
+  PageProps,
+  RouteConfig,
+} from "$fresh/server.ts";
 import { setCookie } from "$std/http/cookie.ts";
 import Login from "../components/Login.tsx";
 import jwt from "jsonwebtoken";
@@ -6,6 +11,11 @@ import { user } from "../types.ts";
 
 type Data = {
   message?: string;
+};
+
+export const config: RouteConfig = {
+  //skipAppWrapper: true, // Disable rendering app wrapper
+  skipInheritedLayouts: true, // Disable already inherited _layout templates
 };
 
 export const handler: Handlers = {

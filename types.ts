@@ -6,5 +6,5 @@ export type user = {
 };
 
 export type video = {
-    
+
 }
