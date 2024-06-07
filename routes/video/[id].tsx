@@ -25,10 +25,14 @@ export const handler: Handlers<Data, State> = {
         return await ctx.render({ video, userid });
       }
       if (response.status === 500) {
-        return new Response("Unexpected Error", { status: 500 });
+        return new Response("Unexpected Error: Fetching Videos", {
+          status: 500,
+        });
       }
       if (response.status === 404) {
-        return new Response("User with id not found", { status: 404 });
+        return new Response("User with id not found: Fetching Videos", {
+          status: 404,
+        });
       } else {
         return new Response("Internal Server Error: Fetching Videos", {
           status: 500,
