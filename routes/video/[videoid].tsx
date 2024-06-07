@@ -20,7 +20,6 @@ export const handler: Handlers<Data, State> = {
       const videoid = ctx.params.videoid;
       const API_URL = Deno.env.get("API_URL");
       const url = `${API_URL}/video/${userid}/${videoid}`;
-      console.log(url)
       const response = await fetch(url);
       if (response.status === 200) {
         const video: video = await response.json();
