@@ -1,9 +1,9 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import Videolist from "../components/Videolist.tsx";
-import { video } from "../types.ts";
+import Video from "../../components/Video.tsx";
+import { video } from "../../types.ts";
 
 type Data = {
-  videos: video[];
+  video: video;
   userid: string;
 };
 
@@ -17,11 +17,12 @@ export const handler: Handlers<Data, State> = {
   async GET(_req: Request, ctx: FreshContext<State, Data>) {
     try {
       const userid = ctx.state.id;
+      const videoid = ctx.params.id;
       const API_URL = Deno.env.get("API_URL");
-      const response = await fetch(`${API_URL}/videos/${userid}`);
+      const response = await fetch(`${API_URL}/video/${userid}/${videoid}`);
       if (response.status === 200) {
-        const videos: video[] = await response.json();
-        return await ctx.render({ videos, userid });
+        const video: video = await response.json();
+        return await ctx.render({ video, userid });
       }
       if (response.status === 500) {
         return new Response("Unexpected Error", { status: 500 });
@@ -39,8 +40,8 @@ export const handler: Handlers<Data, State> = {
   },
 };
 
-const videosPage = (props: PageProps<Data>) => {
-  return <Videolist userid={props.data.userid} videos={props.data.videos} />;
+const videoPage = (props: PageProps<Data>) => {
+  return <Video userid={props.data.userid} video={props.data.video} />;
 };
 
-export default videosPage;
+export default videoPage;

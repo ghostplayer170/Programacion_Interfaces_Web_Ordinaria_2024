@@ -17,7 +17,7 @@ const Videolist: FunctionComponent<Data> = ({ videos, userid }) => {
               <div class="video-item" key={vid.id}>
                 <a href={`/video/${vid.id}}`} class="video-link">
                   <img
-                    src="https://i.ytimg.com/vi/0GuSxDagyVk/hqdefault.jpg"
+                    src={vid.thumbnail}
                     alt={vid.title}
                     class="video-thumbnail"
                   />
