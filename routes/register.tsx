@@ -1,4 +1,9 @@
-import { FreshContext, Handlers, PageProps, RouteConfig } from "$fresh/server.ts";
+import {
+  FreshContext,
+  Handlers,
+  PageProps,
+  RouteConfig,
+} from "$fresh/server.ts";
 import Register from "../components/Register.tsx";
 import { user } from "../types.ts";
 import jwt from "jsonwebtoken";
@@ -25,8 +30,12 @@ export const handler: Handlers = {
         method: "post",
         headers: {
           "Content-Type": "application/json",
-          body: JSON.stringify({ email, password, name }),
         },
+        body: JSON.stringify({
+          email,
+          password,
+          name,
+        }),
       });
       if (response.status === 400) {
         return await ctx.render({ message: "User with email exists" });
